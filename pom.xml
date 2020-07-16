@@ -121,19 +121,6 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>marcellopassosdev-production</id>
-            <url>https://packagecloud.io/marcellopassosdev/production/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <build>
         <plugins>
             <plugin>
