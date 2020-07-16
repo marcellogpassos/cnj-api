@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="https://www.cnj.jus.br/sgt/sgt_ws.php"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             name="sgt_ws_methods" targetNamespace="https://www.cnj.jus.br/sgt/sgt_ws.php">
+    <types>
+        <xsd:schema targetNamespace="https://www.cnj.jus.br/sgt/sgt_ws.php">
+
+            <xsd:complexType name="ArrayOfComplementoMovimento">
+                <xsd:complexContent>
+                    <xsd:restriction base="soap-enc:Array">
+                        <xsd:attribute ref="soap-enc:arrayType" wsdl:arrayType="tns:ComplementoMovimento[]"/>
+                    </xsd:restriction>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="ComplementoMovimento">
+                <xsd:all>
+                    <xsd:element name="seqComplemento" type="xsd:int" nillable="true"/>
+                    <xsd:element name="seqTipoComplemento" type="xsd:int" nillable="true"/>
+                    <xsd:element name="seqComplMov" type="xsd:int" nillable="true"/>
+                    <xsd:element name="dscComplemento" type="xsd:string" nillable="true"/>
+                    <xsd:element name="dscObservacao" type="xsd:string" nillable="true"/>
+                    <xsd:element name="arrayValoresTabelados" type="soap-enc:Array" nillable="true"/>
+                    <xsd:element name="arrayMovimentosVinculados" type="soap-enc:Array" nillable="true"/>
+                </xsd:all>
+            </xsd:complexType>
+
+        </xsd:schema>
+    </types>
+    <portType name="sgt_ws_methodsPort">
+
+        <operation name="getComplementoMovimentoWS">
+            <documentation>Retorna uma string contendo o encadeamento de pais de um item</documentation>
+            <input message="tns:getComplementoMovimentoWSIn"/>
+            <output message="tns:getComplementoMovimentoWSOut"/>
+        </operation>
+
+    </portType>
+    <binding name="sgt_ws_methodsBinding" type="tns:sgt_ws_methodsPort">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <operation name="getComplementoMovimentoWS">
+            <soap:operation soapAction="https://www.cnj.jus.br/sgt/sgt_ws.php#getComplementoMovimentoWS"/>
+            <input>
+                <soap:body use="literal" namespace="https://www.cnj.jus.br/sgt/sgt_ws.php"/>
+            </input>
+            <output>
+                <soap:body use="literal" namespace="https://www.cnj.jus.br/sgt/sgt_ws.php"/>
+            </output>
+        </operation>
+
+    </binding>
+    <service name="sgt_ws_methodsService">
+        <port name="sgt_ws_methodsPort" binding="tns:sgt_ws_methodsBinding">
+            <soap:address location="https://www.cnj.jus.br/sgt/sgt_ws.php"/>
+        </port>
+    </service>
+
+    <message name="getComplementoMovimentoWSIn">
+        <part name="codMovimento" type="xsd:int"/>
+    </message>
+    <message name="getComplementoMovimentoWSOut">
+        <part name="return" type="tns:ArrayOfComplementoMovimento"/>
+    </message>
+
+</definitions>
