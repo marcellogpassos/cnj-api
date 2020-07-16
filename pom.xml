@@ -8,7 +8,7 @@
         <version>2.3.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>br.com.marcellogpassos</groupId>
+    <groupId>br.com.marcellopassos</groupId>
     <artifactId>cnj-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>cnj-api</name>
@@ -67,7 +67,7 @@
             <version>1.2.32</version>
         </dependency>
         <dependency>
-            <groupId>br.tjpb.jus</groupId>
+            <groupId>br.com.marcellopassos</groupId>
             <artifactId>sgt-soap-client</artifactId>
             <version>1.0</version>
         </dependency>
@@ -120,6 +120,19 @@
             <version>5.5.2</version>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>marcellopassosdev-production</id>
+            <url>https://packagecloud.io/marcellopassosdev/production/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
